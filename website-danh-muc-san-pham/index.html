@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="light dark" />
+<link rel="icon" href="data:," />
+<title>Minh Phát Industrial — Catalog Thiết Bị Công Nghiệp (Website Mẫu)</title>
+<meta name="description" content="Website mẫu dạng catalog sản phẩm công nghiệp: bơm, động cơ, van, băng tải, tủ điện — có tìm kiếm, lọc theo danh mục, xem thông số chi tiết và giỏ báo giá. Dữ liệu trên trang là dữ liệu mẫu minh họa cho portfolio." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="demo-bar"><b>DEMO</b> Website mẫu phục vụ portfolio — doanh nghiệp, sản phẩm, giá và số liệu trên trang là dữ liệu mẫu minh họa, không phải doanh nghiệp thật.</div>
+
+<header class="site">
+  <div class="wrap header-in">
+    <a class="logo" href="#top" aria-label="Minh Phát Industrial — trang chủ mẫu">
+      <span class="logo-mark">MP</span>
+      <span class="logo-name">Minh Phát<small>Industrial Equipment</small></span>
+    </a>
+    <button class="burger" id="burger" aria-label="Mở menu" aria-expanded="false">☰</button>
+    <nav class="main" id="mainNav" aria-label="Điều hướng chính">
+      <a href="#danh-muc">Danh mục</a>
+      <a href="#san-pham">Sản phẩm</a>
+      <a href="#vi-sao">Vì sao chọn</a>
+      <a href="#quy-trinh">Quy trình</a>
+      <a href="#faq">Hỏi đáp</a>
+      <a href="#lien-he">Liên hệ</a>
+    </nav>
+    <div class="header-actions">
+      <button class="btn btn-accent quote-btn" id="openQuoteTop" type="button">
+        <span class="hotline-txt">Giỏ báo giá</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        <span class="quote-count" data-quote-count>0</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="wrap hero-in">
+      <div>
+        <h1>Catalog thiết bị công nghiệp <span class="hl">tra cứu nhanh</span>, báo giá rõ ràng</h1>
+        <p class="lead">Mẫu website catalog cho doanh nghiệp thiết bị: khách tìm sản phẩm theo nhu cầu, xem đủ thông số kỹ thuật, rồi gửi danh sách báo giá trong vài phút — không cần gọi qua lại nhiều lần.</p>
+        <form class="hero-search" id="heroSearch" role="search">
+          <input type="search" id="heroSearchInput" placeholder="Tìm bơm, động cơ, van, băng tải…" aria-label="Tìm sản phẩm" />
+          <button class="btn btn-accent" type="submit">Tìm kiếm</button>
+        </form>
+        <div class="hero-stats">
+          <div><div class="num">10</div><div class="lbl">Sản phẩm mẫu trong catalog</div></div>
+          <div><div class="num">7</div><div class="lbl">Nhóm thiết bị chính</div></div>
+          <div><div class="num">24h</div><div class="lbl">Mục tiêu phản hồi báo giá</div></div>
+        </div>
+      </div>
+      <figure style="margin:0">
+        <div class="hero-photo">
+          <img src="images/img-391d78c7.webp" alt="Bên trong nhà xưởng công nghiệp với dãy máy móc và cầu trục" />
+          <figcaption>Ảnh minh họa: kho &amp; xưởng thiết bị công nghiệp (ảnh mẫu)</figcaption>
+        </div>
+      </figure>
+    </div>
+  </div>
+
+  <!-- CATEGORIES -->
+  <section id="danh-muc">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <div class="kicker">Danh mục</div>
+          <h2>7 nhóm thiết bị chính</h2>
+          <p>Bấm vào một nhóm để lọc ngay trong catalog bên dưới — cách khách hàng thật thường bắt đầu khi chưa nhớ mã sản phẩm.</p>
+        </div>
+      </div>
+      <div class="cat-grid" id="catGrid"></div>
+    </div>
+  </section>
+
+  <!-- CATALOG -->
+  <section class="catalog" id="san-pham" style="padding-top:48px">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <div class="kicker">Catalog sản phẩm</div>
+          <h2>Sản phẩm tiêu biểu</h2>
+          <p>Giá hiển thị là giá mẫu để minh họa bố cục. Sản phẩm ghi “Liên hệ” là mặt hàng báo giá theo cấu hình — đúng thực tế ngành thiết bị.</p>
+        </div>
+      </div>
+
+      <div class="toolbar">
+        <div class="search-row">
+          <label class="search-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+            <input type="search" id="searchInput" placeholder="Tìm theo tên, mã SKU hoặc thông số…" aria-label="Tìm trong catalog" />
+          </label>
+          <select id="stockFilter" aria-label="Lọc tình trạng kho">
+            <option value="all">Tất cả tình trạng</option>
+            <option value="in">Còn hàng</option>
+            <option value="low">Sắp hết</option>
+            <option value="order">Đặt hàng</option>
+          </select>
+          <select id="sortSelect" aria-label="Sắp xếp sản phẩm">
+            <option value="featured">Nổi bật trước</option>
+            <option value="price-asc">Giá: thấp → cao</option>
+            <option value="price-desc">Giá: cao → thấp</option>
+            <option value="name">Tên A → Z</option>
+          </select>
+        </div>
+        <div class="pills" id="catPills" role="group" aria-label="Lọc theo danh mục"></div>
+      </div>
+
+      <p class="result-line" id="resultLine"></p>
+      <div class="grid" id="productGrid"></div>
+      <div class="empty" id="emptyState">
+        <p style="font-size:1.05rem;font-weight:700;color:var(--ink)">Không tìm thấy sản phẩm phù hợp</p>
+        <p>Thử bỏ bớt từ khóa hoặc chọn lại danh mục. Với website thật, đây là lúc nút “Gửi yêu cầu tư vấn” giữ khách ở lại trang.</p>
+        <button class="btn btn-navy btn-sm" type="button" id="resetFilters">Xóa bộ lọc</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY -->
+  <section id="vi-sao">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <div class="kicker">Vì sao chọn</div>
+          <h2>Điểm khác biệt doanh nghiệp thường nhấn mạnh</h2>
+        </div>
+      </div>
+      <div class="why-grid">
+        <div class="why-card"><div class="n">01</div><h3>Thông số rõ, chọn đúng ngay</h3><p>Mỗi sản phẩm có bảng thông số đầy đủ (lưu lượng, công suất, kích thước…) để kỹ thuật đối chiếu bản vẽ mà không cần hỏi lại.</p></div>
+        <div class="why-card"><div class="n">02</div><h3>Báo giá theo danh sách</h3><p>Khách gom nhiều mã hàng vào một giỏ báo giá, gửi một lần — giảm qua lại, phù hợp mua hàng cho dự án và bảo trì định kỳ.</p></div>
+        <div class="why-card"><div class="n">03</div><h3>Tư vấn chọn thay thế</h3><p>Khi mã hàng ngừng sản xuất, đội kỹ thuật đề xuất mã tương đương cùng thông số lắp đặt, kèm so sánh chênh lệch giá.</p></div>
+        <div class="why-card"><div class="n">04</div><h3>Hồ sơ bàn giao đầy đủ</h3><p>Catalogue gốc, CO/CQ, hướng dẫn vận hành và phiếu bảo hành đi kèm từng lô hàng — phần khách doanh nghiệp kiểm tra đầu tiên.</p></div>
+      </div>
+
+      <div id="quy-trinh" style="margin-top:44px">
+        <div class="sec-head" style="margin-bottom:18px">
+          <div>
+            <div class="kicker">Quy trình</div>
+            <h2>Từ tra cứu đến báo giá trong 4 bước</h2>
+          </div>
+        </div>
+        <div class="steps">
+          <div class="step"><div class="num">1</div><h3>Tra cứu &amp; lọc</h3><p>Tìm theo tên, mã SKU hoặc lọc theo nhóm thiết bị và tình trạng kho.</p></div>
+          <div class="step"><div class="num">2</div><h3>Xem thông số</h3><p>Mở trang chi tiết, đối chiếu bảng thông số với nhu cầu thực tế.</p></div>
+          <div class="step"><div class="num">3</div><h3>Thêm vào giỏ báo giá</h3><p>Gom các mã cần mua, chỉnh số lượng từng dòng trong giỏ.</p></div>
+          <div class="step"><div class="num">4</div><h3>Gửi yêu cầu</h3><p>Tạo nội dung yêu cầu hoàn chỉnh, sao chép hoặc gửi qua email trong một lần bấm.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- APPLICATIONS -->
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <div class="kicker">Ứng dụng</div>
+          <h2>Thiết bị theo ngành</h2>
+        </div>
+      </div>
+      <div class="app-grid">
+        <article class="app-card">
+          <img src="images/img-15e4a319.jpg" alt="Trung tâm gia công CNC đang cắt gọt kim loại trong nhà máy" loading="lazy" />
+          <div class="overlay"><h3>Cơ khí &amp; gia công</h3><p>Máy CNC, động cơ, hộp giảm tốc và thiết bị truyền động cho xưởng gia công, chế tạo máy.</p></div>
+        </article>
+        <article class="app-card">
+          <img src="images/img-81652fe2.jpg" alt="Hệ thống băng tải công nghiệp trong nhà xưởng sản xuất" loading="lazy" />
+          <div class="overlay"><h3>Sản xuất &amp; đóng gói</h3><p>Băng tải, palang nâng hạ, máy nén khí và tủ điều khiển cho dây chuyền sản xuất liên tục.</p></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <div class="kicker">Hỏi đáp</div>
+          <h2>Câu hỏi khách doanh nghiệp hay hỏi</h2>
+        </div>
+      </div>
+      <div class="faq">
+        <details><summary>Giá trên website đã gồm VAT và vận chuyển chưa?</summary><div class="a">Trên website mẫu này, giá chỉ để minh họa bố cục. Với doanh nghiệp thật, mỗi báo giá cần ghi rõ: đã/chưa gồm VAT, điều kiện giao hàng và thời hạn hiệu lực của báo giá — tránh tranh cãi khi chốt đơn.</div></details>
+        <details><summary>Sản phẩm ghi “Liên hệ báo giá” nghĩa là gì?</summary><div class="a">Đó là mặt hàng giá thay đổi theo cấu hình (công suất, vật liệu, phụ kiện kèm theo) hoặc theo số lượng. Khách thêm vào giỏ báo giá, đội kinh doanh sẽ báo giá chính xác theo đúng cấu hình cần mua.</div></details>
+        <details><summary>Tôi không nhớ mã sản phẩm, chỉ có thông số thì tìm thế nào?</summary><div class="a">Gõ thông số vào ô tìm kiếm (ví dụ “15kW” hoặc “DN100”), catalog sẽ lọc các sản phẩm có thông số tương ứng. Nếu vẫn chưa khớp, gửi yêu cầu ở mục Liên hệ kèm ảnh tem máy cũ.</div></details>
+        <details><summary>Thời gian giao hàng và bảo hành thường ra sao?</summary><div class="a">Hàng có sẵn thường giao trong vài ngày làm việc tùy khu vực; hàng đặt theo cấu hình cần xác nhận tiến độ khi báo giá. Thời hạn bảo hành theo từng dòng máy được ghi trong trang chi tiết và phiếu bàn giao.</div></details>
+        <details><summary>Doanh nghiệp có xuất hóa đơn và hồ sơ CO/CQ không?</summary><div class="a">Với đơn hàng doanh nghiệp, hồ sơ thường gồm hóa đơn VAT, catalogue gốc và chứng từ CO/CQ của lô hàng. Đây là mục nên ghi rõ ngay trên website để bộ phận mua hàng yên tâm gửi yêu cầu.</div></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="lien-he" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <div class="kicker">Liên hệ</div>
+          <h2>Gửi yêu cầu tư vấn / báo giá</h2>
+          <p>Form dưới đây tạo sẵn nội dung email hoàn chỉnh — bạn kiểm tra rồi gửi bằng ứng dụng email của mình, không có dữ liệu nào bị gửi ngầm.</p>
+        </div>
+      </div>
+      <div class="contact-grid">
+        <div class="info-card">
+          <h3>Thông tin liên hệ (mẫu)</h3>
+          <ul>
+            <li><b>Doanh nghiệp mẫu</b>Công ty TNHH Thiết Bị Công Nghiệp Minh Phát (tên minh họa)</li>
+            <li><b>Địa chỉ mẫu</b>Khu công nghiệp — địa chỉ minh họa cho bố cục website</li>
+            <li><b>Giờ làm việc mẫu</b>Thứ 2 – Thứ 7 · 8:00 – 17:30</li>
+            <li><b>Hotline mẫu</b>0901 234 567 (số minh họa, không phải số thật)</li>
+            <li><b>Email mẫu</b>baogia@minhphat-industrial.example</li>
+          </ul>
+        </div>
+        <div class="form-card">
+          <h3>Biểu mẫu yêu cầu</h3>
+          <p>Điền thông tin, hệ thống sẽ soạn sẵn email kèm danh sách trong giỏ báo giá (nếu có).</p>
+          <form id="contactForm">
+            <div class="f-row">
+              <div class="field"><label for="cfName">Họ tên *</label><input id="cfName" required placeholder="Nguyễn Văn A" /></div>
+              <div class="field"><label for="cfPhone">Số điện thoại *</label><input id="cfPhone" required inputmode="tel" placeholder="09xx xxx xxx" /></div>
+            </div>
+            <div class="f-row">
+              <div class="field"><label for="cfCompany">Công ty / xưởng</label><input id="cfCompany" placeholder="Tên đơn vị (nếu có)" /></div>
+              <div class="field"><label for="cfTopic">Nhu cầu</label>
+                <select id="cfTopic"><option>Báo giá sản phẩm</option><option>Tư vấn chọn thiết bị thay thế</option><option>Bảo trì / phụ tùng</option><option>Khác</option></select>
+              </div>
+            </div>
+            <div class="field"><label for="cfMsg">Nội dung</label><textarea id="cfMsg" placeholder="Mô tả nhu cầu: loại thiết bị, thông số, số lượng, địa điểm giao hàng…"></textarea></div>
+            <div class="form-actions">
+              <button class="btn btn-accent" type="submit">Soạn email gửi yêu cầu</button>
+              <button class="btn btn-ghost" type="button" id="copyContact">Sao chép nội dung</button>
+            </div>
+            <p id="contactStatus" style="margin:12px 0 0;color:var(--muted);font-size:.88rem" role="status"></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <h4>Minh Phát Industrial (mẫu)</h4>
+        <p style="margin:0;max-width:26rem">Website mẫu dạng catalog sản phẩm công nghiệp, xây dựng để minh họa năng lực làm website cho doanh nghiệp thiết bị, cơ khí và vật tư kỹ thuật.</p>
+      </div>
+      <div>
+        <h4>Danh mục</h4>
+        <ul>
+          <li><a href="#san-pham" data-foot-cat="bom">Bơm công nghiệp</a></li>
+          <li><a href="#san-pham" data-foot-cat="dong-co">Động cơ &amp; truyền động</a></li>
+          <li><a href="#san-pham" data-foot-cat="van">Van &amp; phụ kiện</a></li>
+          <li><a href="#san-pham" data-foot-cat="tu-dien">Tủ điện &amp; tự động hóa</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Hỗ trợ</h4>
+        <ul>
+          <li><a href="#quy-trinh">Quy trình báo giá</a></li>
+          <li><a href="#faq">Câu hỏi thường gặp</a></li>
+          <li><a href="#lien-he">Gửi yêu cầu tư vấn</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="foot-note">Trang này là <b style="color:#dbe7f3">website mẫu (demo) phục vụ portfolio</b>. Tên doanh nghiệp, sản phẩm, mã SKU, giá, số điện thoại và địa chỉ đều là dữ liệu minh họa được dựng cho bố cục catalog, không phải thông tin của doanh nghiệp thật và không dùng để giao dịch. Ảnh sản phẩm là ảnh minh họa thiết bị công nghiệp.</p>
+  </div>
+</footer>
+
+<!-- Floating -->
+<div class="float-btns">
+  <button class="float-quote" id="openQuoteFloat" type="button" aria-label="Mở giỏ báo giá">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+    <span class="quote-count" data-quote-count>0</span>
+  </button>
+  <a class="float-call" href="#lien-he" aria-label="Đến mục liên hệ">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.45c.9.34 1.84.57 2.8.7A2 2 0 0 1 22 16.9z"/></svg>
+  </a>
+</div>
+
+<!-- Quote drawer -->
+<div class="drawer-backdrop" id="drawerBackdrop"></div>
+<aside class="drawer" id="quoteDrawer" aria-label="Giỏ báo giá">
+  <div class="drawer-head">
+    <h3>Giỏ báo giá <span class="mono" style="color:var(--accent)" id="drawerCount"></span></h3>
+    <button class="drawer-close" id="closeQuote" type="button" aria-label="Đóng giỏ báo giá">✕</button>
+  </div>
+  <div class="drawer-body" id="quoteItems"></div>
+  <div class="drawer-foot">
+    <button class="btn btn-accent" type="button" id="quoteToForm">Dùng danh sách này trong form liên hệ</button>
+    <button class="btn btn-ghost" type="button" id="copyQuote">Sao chép danh sách báo giá</button>
+    <p class="note">Giỏ chỉ lưu tạm trong phiên xem trang này. Nút trên sẽ điền sẵn danh sách vào biểu mẫu liên hệ để bạn soạn email gửi đi.</p>
+  </div>
+</aside>
+
+<!-- Product modal -->
+<div class="modal-backdrop" id="modalBackdrop" role="dialog" aria-modal="true" aria-label="Chi tiết sản phẩm">
+  <div class="modal">
+    <div class="modal-close-row"><button class="drawer-close" id="closeModal" type="button" aria-label="Đóng chi tiết">✕</button></div>
+    <div class="modal-in" id="modalContent"></div>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status"></div>
+<script src="script.js"></script>
+</body>
+</html>
