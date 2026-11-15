@@ -236,6 +236,8 @@
       .form-result h4 { margin: 0 0 8px; color: var(--ok); font-size: 1rem; }
       .form-result pre { white-space: pre-wrap; font: inherit; font-size: 0.9rem; margin: 0 0 12px; color: var(--ink); }
       .copy-note { font-size: 0.82rem; color: var(--ink-soft); margin: 0; }
+      .field-error { display: none; color: #b91c1c; font-size: 0.85rem; margin: 6px 0 0; font-weight: 600; }
+      .field-error.show { display: block; }
 
       /* Footer */
       footer.site { background: var(--steel); color: #b9c9d4; border-top: 4px solid var(--accent); }

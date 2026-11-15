@@ -50,7 +50,12 @@
         var resultText = document.getElementById('resultText');
         var copyBtn = document.getElementById('copyBtn');
         var copyNote = document.getElementById('copyNote');
+        var phoneError = document.getElementById('phoneError');
         var lastText = '';
+        document.getElementById('fPhone').addEventListener('input', function () {
+          phoneError.textContent = '';
+          phoneError.classList.remove('show');
+        });
         form.addEventListener('submit', function (e) {
           e.preventDefault();
           var name = document.getElementById('fName').value.trim();
@@ -65,10 +70,14 @@
           if (phoneNorm.indexOf('+84') === 0) phoneNorm = '0' + phoneNorm.slice(3);
           if (!/^0[35789]\d{8}$/.test(phoneNorm)) {
             result.classList.remove('show');
-            copyNote.textContent = 'Số điện thoại chưa đúng — vui lòng nhập số di động Việt Nam 10 số, bắt đầu bằng 03, 05, 07, 08 hoặc 09.';
+            copyNote.textContent = '';
+            phoneError.textContent = 'Số điện thoại chưa đúng — vui lòng nhập số di động Việt Nam 10 số, bắt đầu bằng 03, 05, 07, 08 hoặc 09.';
+            phoneError.classList.add('show');
             document.getElementById('fPhone').focus();
             return;
           }
+          phoneError.textContent = '';
+          phoneError.classList.remove('show');
           phone = phoneNorm;
           var product = document.getElementById('fProduct');
           var productText = product.value || 'Chưa chọn — cần tư vấn';
