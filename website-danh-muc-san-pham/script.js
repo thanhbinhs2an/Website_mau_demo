@@ -188,8 +188,9 @@ var drawer = document.getElementById("quoteDrawer"), backdrop = document.getElem
 function quoteCountTotal(){ return Object.keys(quote).reduce(function(s,k){return s+quote[k];},0); }
 function updateQuoteBadges(){
   var n = quoteCountTotal();
+  var lines = Object.keys(quote).length;
   document.querySelectorAll("[data-quote-count]").forEach(function(el){ el.textContent = n; });
-  document.getElementById("drawerCount").textContent = n ? "("+n+" dòng hàng)" : "";
+  document.getElementById("drawerCount").textContent = lines ? "("+lines+" dòng hàng)" : "";
   renderQuoteItems();
 }
 function renderQuoteItems(){
@@ -198,9 +199,15 @@ function renderQuoteItems(){
   if(!ids.length){ box.innerHTML = '<div class="q-empty"><p style="font-weight:700;color:var(--ink)">Giỏ báo giá đang trống</p><p>Thêm sản phẩm từ catalog để tạo một danh sách báo giá hoàn chỉnh gửi trong một lần.</p></div>'; return; }
   box.innerHTML = ids.map(function(id){
     var p = PRODUCTS.filter(function(x){return x.id===id;})[0];
-    var priceTxt = p.price===null ? "Liên hệ báo giá" : fmtPrice(p.price)+" / "+p.unit;
+    var priceTxt = p.price===null ? "Liên hệ báo giá" : fmtPrice(p.price)+" / "+p.unit+" · thành tiền "+fmtPrice(p.price*quote[id]);
     return '<div class="q-item"><img src="'+p.img+'" alt="" /><div><h4>'+p.name+'</h4><span class="sku">'+p.sku+' · '+priceTxt+'</span><br /><span class="qty-ctrl"><button type="button" data-qminus="'+id+'" aria-label="Giảm">−</button><input value="'+quote[id]+'" data-qty="'+id+'" inputmode="numeric" aria-label="Số lượng" /><button type="button" data-qplus="'+id+'" aria-label="Tăng">+</button></span></div><button class="q-remove" type="button" data-qremove="'+id+'">Xóa</button></div>';
   }).join("");
+  var total = 0, hasUnpriced = false;
+  ids.forEach(function(id){
+    var p = PRODUCTS.filter(function(x){return x.id===id;})[0];
+    if (p.price===null) hasUnpriced = true; else total += p.price * quote[id];
+  });
+  box.innerHTML += '<div class="q-total" style="border-top:1px solid #e5e7eb;margin-top:12px;padding-top:12px;font-weight:700">Tổng tạm tính: '+fmtPrice(total)+(hasUnpriced ? ' <small style="font-weight:400">(chưa gồm mặt hàng liên hệ báo giá)</small>' : '')+'</div>';
 }
 document.getElementById("quoteItems").addEventListener("click", function(e){
   var m = e.target.closest("[data-qminus]"), pl = e.target.closest("[data-qplus]"), r = e.target.closest("[data-qremove]");
@@ -215,7 +222,7 @@ document.getElementById("quoteItems").addEventListener("change", function(e){
   syncQuote();
 });
 function syncQuote(){ updateQuoteBadges(); renderProducts(); }
-function addToQuote(id, n){ quote[id] = (quote[id]||0)+n; syncQuote(); showToast("Đã thêm vào giỏ báo giá ("+quoteCountTotal()+" dòng hàng)"); }
+function addToQuote(id, n){ quote[id] = (quote[id]||0)+n; syncQuote(); showToast("Đã thêm vào giỏ báo giá ("+Object.keys(quote).length+" dòng hàng)"); }
 function openQuote(){ drawer.classList.add("show"); backdrop.classList.add("show"); }
 function closeQuote(){ drawer.classList.remove("show"); backdrop.classList.remove("show"); }
 document.getElementById("openQuoteTop").addEventListener("click", openQuote);
@@ -229,8 +236,14 @@ function quoteText(){
   var lines = ["DANH SÁCH YÊU CẦU BÁO GIÁ (từ website mẫu Minh Phát Industrial):",""];
   ids.forEach(function(id, i){
     var p = PRODUCTS.filter(function(x){return x.id===id;})[0];
-    lines.push((i+1)+". "+p.name+" ["+p.sku+"] — SL: "+quote[id]+" "+p.unit+" — "+(p.price===null?"Nhờ báo giá":fmtPrice(p.price)+"/"+p.unit+" (giá mẫu)"));
+    lines.push((i+1)+". "+p.name+" ["+p.sku+"] — SL: "+quote[id]+" "+p.unit+" — "+(p.price===null?"Nhờ báo giá":fmtPrice(p.price)+"/"+p.unit+" (giá mẫu) — thành tiền "+fmtPrice(p.price*quote[id])));
   });
+  var total = 0, hasUnpriced = false;
+  ids.forEach(function(id){
+    var p = PRODUCTS.filter(function(x){return x.id===id;})[0];
+    if (p.price===null) hasUnpriced = true; else total += p.price * quote[id];
+  });
+  lines.push("", "TỔNG TẠM TÍNH (chỉ các mặt hàng có giá mẫu): "+fmtPrice(total)+(hasUnpriced ? " — chưa gồm mặt hàng nhờ báo giá" : ""));
   return lines.join("\n");
 }
 function copyText(txt, msg){
@@ -271,6 +284,9 @@ document.getElementById("contactForm").addEventListener("submit", function(e){
   e.preventDefault();
   var c = contactText();
   if(!c.name || !c.phone){ document.getElementById("contactStatus").textContent = "Vui lòng nhập họ tên và số điện thoại để bên bán liên hệ lại."; return; }
+  var phoneNorm = c.phone.replace(/[\s.\-]/g, '');
+  if (phoneNorm.indexOf('+84') === 0) phoneNorm = '0' + phoneNorm.slice(3);
+  if (!/^0[35789]\d{8}$/.test(phoneNorm)){ document.getElementById("contactStatus").textContent = "Số điện thoại chưa đúng — vui lòng nhập số di động Việt Nam 10 số, bắt đầu bằng 03, 05, 07, 08 hoặc 09."; return; }
   var subject = encodeURIComponent("Yêu cầu "+c.topic+" — "+c.name);
   var body = encodeURIComponent(c.body);
   var mailLink = document.createElement("a");
