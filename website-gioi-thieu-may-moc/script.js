@@ -61,6 +61,15 @@
             (name ? document.getElementById('fPhone') : document.getElementById('fName')).focus();
             return;
           }
+          var phoneNorm = phone.replace(/[\s.\-]/g, '');
+          if (phoneNorm.indexOf('+84') === 0) phoneNorm = '0' + phoneNorm.slice(3);
+          if (!/^0[35789]\d{8}$/.test(phoneNorm)) {
+            result.classList.remove('show');
+            copyNote.textContent = 'Số điện thoại chưa đúng — vui lòng nhập số di động Việt Nam 10 số, bắt đầu bằng 03, 05, 07, 08 hoặc 09.';
+            document.getElementById('fPhone').focus();
+            return;
+          }
+          phone = phoneNorm;
           var product = document.getElementById('fProduct');
           var productText = product.value || 'Chưa chọn — cần tư vấn';
           var msg = document.getElementById('fMsg').value.trim() || '(chưa mô tả thêm)';
